@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Login Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans|Comfortaa" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" media="screen" href="{% static 'App/home.css' %}" />
+</head>
+<body>
+    <div class='scene'>
+        <div class='card'>
+            <div class='card__face card__face--front'>
+                <h1>Log In</h1>
+                <form action="{% url 'login:account' %}" method='POST'>
+                    {% csrf_token %}
+                    <input type='email' name="email" placeholder="Email">
+                    <input type='password' name="password" placeholder="Password">
+                    <a href='#' id='forgot'>Forgot Password?</a>
+                    <input type="submit" value='Log In'>
+                    <a href='#' id='signup'>Sign Up</a>
+                </form>
+            </div>
+            <div class='card__face card__face--back'>
+                <h1>Sign Up</h1>
+                <form action="{% url 'login:create' %}" method='POST'>
+                    {% csrf_token %}
+                    <input type='text' name="name" placeholder="Full Name">
+                    <input type='email' name="email" placeholder="Email">
+                    <input type='password' name="password" placeholder="Password">
+                    <input type="submit" value='Sign Up'>
+                    <a href='#' id='login'>Log In</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        card = document.getElementsByClassName('card')[0];
+        signupLink = document.getElementById('signup');
+        loginLink = document.getElementById('login');
+        signupLink.onclick = () => { card.classList.add('is-flipped'); };
+        loginLink.onclick = () => { card.classList.remove('is-flipped'); };
+    </script>
+    <!-- <div class='card'>
+        <h1>Sign Up</h1>
+        <form>
+            <input type='text' name="name" placeholder="Full Name">
+            <input type='email' name='email' placeholder="Email">
+            <input type='password' name="password" placeholder="Password">
+            <input type="submit" value='Sign Up'>
+            <a href='#' id='login'>Log In</a>
+        </form>
+    </div> -->
+</body>
+</html>
