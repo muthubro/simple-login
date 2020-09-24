@@ -1,3 +1,4 @@
+#Hi muathasim parambat. I really liked your work. Keep it up. And dont forget me when you become the CEO of Amazon
 from django.shortcuts import render
 from django.urls import reverse
 from django.http import HttpResponseRedirect
